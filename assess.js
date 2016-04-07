@@ -73,13 +73,17 @@ exports.leastApps = function(mappedData) {
 
 exports.mostApps = function(mappedData) {
   var most = mappedData.sort(function(a,b) {return a.apps.length - b.apps.length;});
-  return most.filter(function(a) {return a.apps.length === most.length-1});
+  return most.filter(function(a) {return a.apps.length === most[most.length-1].apps.length});
 }
 
 function useFaceblock(yesNo, mappedData) {
   switch (yesNo) {
-    case "yes" : return mappedData.filter(function(a){return a.apps.indexOf("Faceblock")!==-1;});
-    case "no" : return mappedData.filter(function(a){return a.apps.indexOf("Faceblock")===-1;});
+    case "yes" : return mappedData.filter(function(a){return a.apps.indexOf("Faceblock")!==-1;}).map(function(user){
+      return user.user;
+    });
+    case "no" : return mappedData.filter(function(a){return a.apps.indexOf("Faceblock")===-1;}).map(function(user){
+      return user.user;
+    });
     default : return false;
   }
 }
@@ -120,7 +124,7 @@ function calcAppUsage(mappedData) {
     var dataF = a.data/sumRatios;
     return {
               user: a.user,
-              appUsage: a.apps.map(function(a){
+              usage: a.apps.map(function(a){
                           return {app: a, usage: Number((dataF*getRatio(a)).toFixed(2))};
                         })
     }
@@ -178,4 +182,4 @@ var all = allocateData(appdata, "updatedDataText");
 var allUpdated = allocateData(updatedAppData, "updatedDataText");
 // var all = allocateData(appdata, "datatext");
 
-// console.log(allUpdated);
+console.log(allUpdated);
