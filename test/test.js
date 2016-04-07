@@ -87,15 +87,6 @@ describe("ASSESSMENT 1", function(){
     var result = assess.updateMappedData(appData, "uninstalledtext");
     assert.deepEqual(result, [ { user: 'Walter', apps: [ 'Faceblock' ]},{ user: 'Saul', apps: [ 'LankedOn', 'Faceblock' ]},{ user: 'Jesse',apps: [ 'Tooter', 'Faceblock', 'Instantgam', 'Snaptalk' ]},{ user: 'Gus', apps: [ 'Instantgam' ]}]);
   });
-  // it(". should ", function(){
-  //   var result = assess.;
-  //   assert.deepEqual(result, );
-  // });
-  // //
-  // it(". should ", function(){
-  //   var result = assess.;
-  //   assert.deepEqual(result, );
-  // });
 
 
 });
